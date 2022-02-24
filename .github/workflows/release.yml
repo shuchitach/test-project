@@ -1,0 +1,12 @@
+name: First workflow test
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  first_test_job:
+    name: First Test Job
+    steps:
+      - id: step1
+        run: echo "Test step 1 echo"
