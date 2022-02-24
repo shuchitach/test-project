@@ -2,7 +2,7 @@ name: First workflow test
 
 on:
   push:
-    branches: [ main ]
+    branches: [ feature/test-workflow ]
 
 jobs:
   first_test_job:
@@ -11,3 +11,5 @@ jobs:
     steps:
       - id: step1
         run: echo "Test step 1 echo"
+      - id: step2
+        uses: actions/create-release@v1
