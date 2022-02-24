@@ -7,6 +7,7 @@ on:
 jobs:
   first_test_job:
     name: First Test Job
+    runs-on: ubuntu-latest
     steps:
       - id: step1
         run: echo "Test step 1 echo"
