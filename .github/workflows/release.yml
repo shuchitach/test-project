@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: step1
-        run: echo $GITHUB_CONTEXT
+        run: echo "$GITHUB_CONTEXT"
       #- name: Create release
       #  id: create_release
       #  uses: actions/create-release@v1
