@@ -21,7 +21,7 @@ jobs:
         id: set_output
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "::set-output name=out::${{ github.event.after }} | cut -c1-5"
+        run: echo "::set-output name=out::${{ github.event.after }}" | cut -c1-5
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
