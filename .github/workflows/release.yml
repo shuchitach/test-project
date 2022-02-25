@@ -24,6 +24,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.create_release.outputs.out }}
+          tag_name: ${{ steps.set_output.outputs.out }}
           release_name: Release ${{ github.ref }}
           body: ${{ github.event.head_commit.message }}
