@@ -13,6 +13,10 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+      - id: step2
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "${{ github.event.after }} | cut -c1-5"
       - name: Set Output
         id: set_output
         env:
