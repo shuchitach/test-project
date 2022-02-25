@@ -13,12 +13,17 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
-      #- name: Create release
-      #  id: create_release
-      #  uses: actions/create-release@v1
-      #  env:
-      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #  with:
-      #    tag_name: ${{ github.event.head_commit }}
-      #    release_name: Release ${{ github.ref }}
-      #    body: ${{ github.event.head_commit.message }}
+      - name: Set Output
+        id: set_output
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "::set-output name=out::$GITHUB_CONTEXT" | cut -c1-5
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.create_release.outputs.out }}
+          release_name: Release ${{ github.ref }}
+          body: ${{ github.event.head_commit.message }}
