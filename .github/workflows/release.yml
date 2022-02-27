@@ -20,7 +20,10 @@ jobs:
       - name: Set Output
         id: set_output
         run: |
-          echo ::set-output name=out::(${{ github.event.after }} | cut -c1-5)
+          tag_value=${{ github.event.after }} | cut -c1-5
+          echo $tag_value
+          echo ${{ tag_value }}
+          echo ::set-output name=out::${{ tag_value }}
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
