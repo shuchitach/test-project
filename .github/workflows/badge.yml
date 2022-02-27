@@ -1,4 +1,4 @@
-name: Badge test
+name: Badge_test
 
 on:
   push:
