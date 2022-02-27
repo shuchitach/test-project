@@ -17,18 +17,16 @@ jobs:
       #  env:
       #    GITHUB_CONTEXT: ${{ toJson(github) }}
       #  run: echo "${{ github.event.after }}" | cut -c1-5
-      #- name: Set Output
-      #  id: set_output
-      #  env:
-      #    GITHUB_CONTEXT: ${{ toJson(github) }}
-      #  run: echo "::set-output name=out::${{ github.event.after }} | cut -c1-5"
+      - name: Set Output
+        id: set_output
+        run: echo ::set-output name=out::${{ github.event.after }} | cut -c1-5
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_CONTEXT: ${{ toJson(github) }}
         with:
-          tag_name: Tag_${{ github.run_id }}
+          #tag_name: Tag_${{ github.run_id }}
+          tag_name: ${{ steps.set_outputoutputs.out }}
           release_name: Release ${{ github.ref }}
           body: ${{ github.event.head_commit.message }}
