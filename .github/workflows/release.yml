@@ -17,20 +17,20 @@ jobs:
       #  env:
       #    GITHUB_CONTEXT: ${{ toJson(github) }}
       #  run: echo "${{ github.event.after }}" | cut -c1-5
-      - name: Set Output
-        id: set_output
-        run: |
-          echo "tag_value=${{ github.event.after }} | cut -c1-5" \
-          echo $tag_value \
-          echo ${{ tag_value }} \
-          echo ::set-output name=out::${{ tag_value }}
+      #- name: Set Output
+      #  id: set_output
+      #  run: |
+      #    echo "tag_value=${{ github.event.after }} | cut -c1-5" \
+      #    echo $tag_value \
+      #    echo ${{ tag_value }} \
+      #    echo ::set-output name=out::${{ github.event.after }} | cut -c1-5
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          #tag_name: Tag_${{ github.run_id }}
-          tag_name: ${{ steps.set_output.outputs.out }}
+          tag_name: Tag_${{ github.run_id }}
+          #tag_name: ${{ steps.set_output.outputs.out }}
           release_name: Release ${{ github.ref }}
           body: ${{ github.event.head_commit.message }}
