@@ -38,5 +38,5 @@ jobs:
           tag_name: Tag_${{ github.run_id }}
           #tag_name: ${{ steps.set_output.outputs.out }}
           #release_name: Release ${{ github.ref }}
-          release_name: ${{ github.event.release_name }}
+          release_name: ${{ github.event.inputs.release_name }}
           body: ${{ github.event.head_commit.message }}
