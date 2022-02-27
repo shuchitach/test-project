@@ -1,8 +1,13 @@
 name: First workflow test
 
 on:
-  push:
-    branches: [ feature/test-workflow ]
+  #push:
+  #  branches: [ feature/test-workflow ]
+  workflow_dispatch:
+    inputs:
+      release_name:
+        description: "Release name"
+        required: true
 
 jobs:
   first_test_job:
@@ -32,5 +37,6 @@ jobs:
         with:
           tag_name: Tag_${{ github.run_id }}
           #tag_name: ${{ steps.set_output.outputs.out }}
-          release_name: Release ${{ github.ref }}
+          #release_name: Release ${{ github.ref }}
+          release_name: ${{ github.event.release_name }}
           body: ${{ github.event.head_commit.message }}
