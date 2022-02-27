@@ -20,7 +20,7 @@ jobs:
       - name: Set Output
         id: set_output
         run: |
-          tag_value=${{ github.event.after }} | cut -c1-5 \
+          echo "tag_value=${{ github.event.after }} | cut -c1-5" \
           echo $tag_value \
           echo ${{ tag_value }} \
           echo ::set-output name=out::${{ tag_value }}
