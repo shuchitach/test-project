@@ -19,7 +19,8 @@ jobs:
       #  run: echo "${{ github.event.after }}" | cut -c1-5
       - name: Set Output
         id: set_output
-        run: echo ::set-output name=out::${{ github.event.after }} | cut -c1-5
+        run: |
+          echo ::set-output name=out::$(${{ github.event.after }} | cut -c1-5)
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
