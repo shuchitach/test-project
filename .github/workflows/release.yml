@@ -27,6 +27,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           #tag_name: Tag_${{ github.run_id }}
-          tag_name: ${{ steps.set_outputoutputs.out }}
+          tag_name: ${{ steps.set_output.outputs.out }}
           release_name: Release ${{ github.ref }}
           body: ${{ github.event.head_commit.message }}
