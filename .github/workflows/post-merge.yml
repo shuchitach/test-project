@@ -18,23 +18,11 @@ jobs:
       - id: describe_tag
         run: |
           echo ::set-output name=extra_commits::$(git describe --tags)
-          echo $extra_commits
-      #- id: step2
-      #  env:
-      #    GITHUB_CONTEXT: ${{ toJson(github) }}
-      #  run: echo "${{ github.event.after }}" | cut -c1-5
-      #- name: Set Output
-      #  id: set_output
-      #  run: |
-      #    echo "tag_value=${{ github.event.after }} | cut -c1-5" \
-      #    echo $tag_value \
-      #    echo ${{ tag_value }} \
-      #    echo ::set-output name=out::${{ github.event.after }} | cut -c1-5
       - name: Time badge
         uses: RubbaBoy/BYOB@v1.2.1
         with:
           NAME: Version
           LABEL: 'Version'
           STATUS: ${{ steps.describe_tag.outputs.extra_commits }}
-          COLOR: 51B077
+          COLOR: C48C37
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
