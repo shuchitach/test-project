@@ -13,7 +13,7 @@ jobs:
       - name: Time badge
         uses: RubbaBoy/BYOB@v1.2.1
         with:
-          NAME: time
+          NAME: Badge_test
           LABEL: 'Updated at'
           STATUS: ${{ steps.date.outputs.data }}
           COLOR: 00EEFF
