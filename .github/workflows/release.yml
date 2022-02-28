@@ -40,3 +40,11 @@ jobs:
           #release_name: Release ${{ github.ref }}
           release_name: ${{ github.event.inputs.release_name }}
           body: ${{ github.event.head_commit.message }}
+      - name: Time badge
+        uses: RubbaBoy/BYOB@v1.2.1
+        with:
+          NAME: Version
+          LABEL: 'Version'
+          STATUS: ${{ github.event.inputs.release_name }}
+          COLOR: 26F583
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
