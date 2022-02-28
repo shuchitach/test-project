@@ -46,5 +46,5 @@ jobs:
           NAME: Version
           LABEL: 'Version'
           STATUS: ${{ github.event.inputs.release_name }}
-          COLOR: 26F583
+          COLOR: 51B077
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
