@@ -1,5 +1,5 @@
 # Badge
 
-[![CodeStatus Actions Status](https://github.com/shuchitach/test-project/workflows/badge_test/badge.svg)](https://github.com/shuchitach/test-project/actions)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/shuchitach/test-project)
 
 ## This is a test file
