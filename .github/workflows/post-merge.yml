@@ -15,7 +15,7 @@ jobs:
       - id: Fetch_tags
         run: git fetch --prune --unshallow --tags
       - run: git describe --tags
-      - id: step1
+      - id: describe_tag
         run: |
           echo ::set-output name=extra_commits::$(git describe --tags)
           echo $extra_commits
@@ -30,11 +30,11 @@ jobs:
       #    echo $tag_value \
       #    echo ${{ tag_value }} \
       #    echo ::set-output name=out::${{ github.event.after }} | cut -c1-5
-      #- name: Time badge
-      #  uses: RubbaBoy/BYOB@v1.2.1
-      #  with:
-      #    NAME: Version
-      #    LABEL: 'Version'
-      #    STATUS: ${{ github.event.inputs.release_name }}
-      #    COLOR: 51B077
-      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Time badge
+        uses: RubbaBoy/BYOB@v1.2.1
+        with:
+          NAME: Version
+          LABEL: 'Version'
+          STATUS: ${{ steps.describe_tag.outputs.extra_commits }}
+          COLOR: 51B077
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
