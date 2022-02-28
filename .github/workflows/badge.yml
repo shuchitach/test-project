@@ -1,8 +1,9 @@
 name: Badge_test
 
 on:
-  push:
-    branches: [ feature/test-workflow ]
+  workflow_dispatch
+  #push:
+  #  branches: [ feature/test-workflow ]
 
 jobs:
   badge_job:

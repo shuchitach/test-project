@@ -11,7 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: step1
-        run: echo ::set-output name=extra_commits::${{ git describe --tags }}
+        run: |
+          var extra_commit=git describe --tags
+          echo $extra_commit
+          echo ::set-output name=extra_commits::${{ extra_commit }}
       #- id: step2
       #  env:
       #    GITHUB_CONTEXT: ${{ toJson(github) }}
