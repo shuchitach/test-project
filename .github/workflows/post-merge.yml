@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        run: git fetch --prune --unshallow --tags
       - id: step1
         run: |
           echo ::set-output name=extra_commits::$(git describe --tags)
