@@ -7,28 +7,30 @@ on:
 
 jobs:
   first_test_job:
-    name: Find extra commits
-    runs-on: ubuntu-latest
-    steps:
-      - id: step1
-        run: |
-          echo ::set-output name=extra_commits::$(git describe --tags)
-      #- id: step2
-      #  env:
-      #    GITHUB_CONTEXT: ${{ toJson(github) }}
-      #  run: echo "${{ github.event.after }}" | cut -c1-5
-      #- name: Set Output
-      #  id: set_output
-      #  run: |
-      #    echo "tag_value=${{ github.event.after }} | cut -c1-5" \
-      #    echo $tag_value \
-      #    echo ${{ tag_value }} \
-      #    echo ::set-output name=out::${{ github.event.after }} | cut -c1-5
-      #- name: Time badge
-      #  uses: RubbaBoy/BYOB@v1.2.1
-      #  with:
-      #    NAME: Version
-      #    LABEL: 'Version'
-      #    STATUS: ${{ github.event.inputs.release_name }}
-      #    COLOR: 51B077
-      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Find extra commits
+      runs-on: ubuntu-latest
+      steps:
+        - id: step1
+          run: |
+            echo ::set-output name=extra_commits::$(git describe --tags)
+        #- id: step2
+        #  env:
+        #    GITHUB_CONTEXT: ${{ toJson(github) }}
+        #  run: echo "${{ github.event.after }}" | cut -c1-5
+        #- name: Set Output
+        #  id: set_output
+        #  run: |
+        #    echo "tag_value=${{ github.event.after }} | cut -c1-5" \
+        #    echo $tag_value \
+        #    echo ${{ tag_value }} \
+        #    echo ::set-output name=out::${{ github.event.after }} | cut -c1-5
+        #- name: Time badge
+        #  uses: RubbaBoy/BYOB@v1.2.1
+        #  with:
+        #    NAME: Version
+        #    LABEL: 'Version'
+        #    STATUS: ${{ github.event.inputs.release_name }}
+        #    COLOR: 51B077
+        #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
