@@ -14,10 +14,10 @@ jobs:
     name: First Test Job
     runs-on: ubuntu-latest
     steps:
-      - id: step1
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+      #- id: step1
+      #  env:
+      #    GITHUB_CONTEXT: ${{ toJson(github) }}
+      #  run: echo "$GITHUB_CONTEXT"
       #- id: step2
       #  env:
       #    GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -33,10 +33,19 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: Tag_${{ github.run_id }}
+          tag_name: ${{ github.event.inputs.release_name }}
           #tag_name: ${{ steps.set_output.outputs.out }}
           #release_name: Release ${{ github.ref }}
           release_name: ${{ github.event.inputs.release_name }}
           body: ${{ github.event.head_commit.message }}
+      - name: Version_Badge
+        uses: RubbaBoy/BYOB@v1.2.1
+        with:
+          NAME: Version
+          LABEL: 'Version'
+          STATUS: ${{ github.event.inputs.release_name }}
+          COLOR: 51B077
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
