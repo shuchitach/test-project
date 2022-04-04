@@ -1,12 +1,12 @@
 from prefect import task, Flow, Client
 from python_terraform import *
-from config import settings
+#from config import settings
 from prefect.storage import Local, Azure, S3, GitHub
 from prefect.run_configs import LocalRun
 #import boto3
 
 client = Client(
-    api_server = settings.prefect_server
+    api_server = "http://20.185.237.231:4200/graphql"
 )
 
 azstorage = Azure("flows", blob_name="test_blob")
